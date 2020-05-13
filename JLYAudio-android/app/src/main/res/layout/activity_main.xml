@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:id="@+id/tv_local_uid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:text="本地UID"
+            android:textColor="@color/jly_grey"
+            android:textSize="11sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="房间号"
+            android:textColor="@color/jly_grey"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_local_uid"
+            app:layout_constraintStart_toStartOf="@+id/edittext_local_roomid" />
+
+        <EditText
+            android:id="@+id/edittext_local_uid"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="@dimen/dp6"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/bg_setting"
+            android:digits="1234567890"
+            android:gravity="left|center"
+            android:importantForAutofill="no"
+            android:inputType="phone|number"
+            android:maxLength="6"
+            android:paddingLeft="@dimen/dp10"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp16"
+            android:windowSoftInputMode="adjustPan|stateVisible"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_local_uid"
+            app:layout_constraintRight_toLeftOf="@+id/edittext_local_roomid"
+            app:layout_constraintTop_toBottomOf="@+id/tv_local_uid"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/edittext_local_roomid"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_setting"
+            android:digits="1234567890"
+            android:gravity="left|center"
+            android:importantForAutofill="no"
+            android:inputType="phone|number"
+            android:maxLength="8"
+            android:paddingLeft="@dimen/dp10"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp16"
+            android:windowSoftInputMode="adjustPan|stateVisible"
+            app:layout_constraintBottom_toBottomOf="@+id/edittext_local_uid"
+            app:layout_constraintLeft_toRightOf="@+id/edittext_local_uid"
+            app:layout_constraintRight_toLeftOf="@+id/btn_join_room"
+            tools:targetApi="o" />
+
+        <com.mediaroom.ui.MyTextView
+            android:id="@+id/btn_join_room"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="@dimen/dp17"
+            android:layout_marginRight="@dimen/dp12"
+            android:gravity="center"
+            android:text="@string/join_room"
+            android:textColor="@color/white95"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintBottom_toBottomOf="@+id/edittext_local_uid"
+            app:layout_constraintLeft_toRightOf="@+id/edittext_local_roomid"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginTop="@dimen/dp16"
+            android:background="#33A3ACCC"
+            android:drawableRight="@mipmap/ic_black_pull"
+            android:drawablePadding="@dimen/dp12"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:text="通话模式:"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_local_uid"
+            app:layout_constraintRight_toRightOf="@+id/btn_join_room"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_local_uid" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintBottom_toTopOf="@+id/iv_enableLoud"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_local_uid"
+            app:layout_constraintRight_toRightOf="@+id/btn_join_room"
+            app:layout_constraintTop_toBottomOf="@+id/tv_select" />
+
+        <ImageView
+            android:id="@+id/iv_enableLoud"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginBottom="@dimen/dp12"
+            android:background="@drawable/bg_speak_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_local_uid" />
+
+        <ImageView
+            android:id="@+id/iv_ear_monitor"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp12"
+            android:background="@drawable/ic_ear_monitor_unselected"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_enableLoud"
+            app:layout_constraintLeft_toRightOf="@+id/iv_enableLoud" />
+
+        <ImageView
+            android:id="@+id/iv_sound_effect"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginLeft="@dimen/dp12"
+            android:src="@drawable/ic_sound_effect"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_enableLoud"
+            app:layout_constraintLeft_toRightOf="@+id/iv_ear_monitor" />
+
+        <ImageView
+            android:id="@+id/iv_feedback"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginRight="@dimen/dp12"
+            android:src="@drawable/ic_feedback"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_enableLoud"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion "${compile_sdk_version}" as Integer
+    defaultConfig {
+        applicationId "rays.demo.audio"
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode Integer.valueOf(System.env.BUILD_NUMBER ?: "1")
+        versionName thunder_version
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    outputFileName = "SCAudio-${variant.versionName}-${variant.versionCode}-official.apk"
+                }
+        }
+    }
+
+    signingConfigs {
+        release {}
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+        }
+
+        release {
+            debuggable true
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //noinspection GradleCompatible
+    implementation "com.android.support:appcompat-v7:${appcompat_v7_version}"
+    implementation "com.android.support:design:${appcompat_v7_version}"
+    implementation "com.android.support:recyclerview-v7:${appcompat_v7_version}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    //ThunderBolt
+    implementation "com.rtc.thunder:thunderbolt:${thunder_version}"
+
+    //公司内部工具类
+    api "tv.athena:platform:${athena_version}"
+    implementation "tv.athena:core:${athena_version}"
+    api "tv.athena:klog-api:${athena_version}"
+    runtimeOnly "tv.athena:klog:${athena_version}"
+    api "tv.athena:crash-api:${athena_version}"
+    implementation "tv.athena:crash:${athena_version}"
+    api "tv.athena:filetransfer-api:${athena_version}"
+    runtimeOnly "tv.athena:filetransfer:${athena_version}"
+    api "tv.athena:http-api:${athena_version}"
+    runtimeOnly "tv.athena:http:${athena_version}"
+
+    api "tv.athena:feedback-api:${feedback_version}"
+    runtimeOnly "tv.athena:feedback:${feedback_version}"
+
+    //fastjson
+    implementation "com.alibaba:fastjson:1.2.42"
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+
+}
+
+tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+//File signFile = new File("${project.rootDir}/signing.properties")
+File signFile = file(System.getenv('HOME') + "/.android/SCouldsign.properties")
+if (signFile.canRead()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(signFile))
+    if (p != null
+            && p.containsKey('key.store')
+            && p.containsKey('key.store.password')
+            && p.containsKey('key.alias')
+            && p.containsKey('key.alias.password')
+    ) {
+        println "RELEASE_BUILD: Signing..."
+        android.signingConfigs.release.storeFile = file(p['key.store'])
+        android.signingConfigs.release.storePassword = p['key.store.password']
+        android.signingConfigs.release.keyAlias = p['key.alias']
+        android.signingConfigs.release.keyPassword = p['key.alias.password']
+    } else {
+        println "RELEASE_BUILD: Required properties in signing.properties are missing"
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    println "RELEASE_BUILD: signing.properties not found"
+    android.buildTypes.release.signingConfig = null
+}
+
+tasks.whenTaskAdded { t ->
+    if (t.name == 'assembleRelease') {
+        println "assembleRelease: run collectApks collectProguard"
+        assembleRelease.finalizedBy collectApks
+//        collectApks.finalizedBy collectProguard
+    }
+}
+
+task collectApks() {
+    doLast {
+        println "Copies APKs and Proguard mappingsto the target directory"
+        copy {
+            from 'build/outputs/apk/release'
+            exclude '**/*-unaligned.apk'
+            into "${project.rootDir}/target"
+        }
+        copy {
+            from 'build/outputs/mapping'
+            into "${project.rootDir}/target/proguard"
+        }
+    }
+}

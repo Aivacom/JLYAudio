@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- alpha white-->
+    <color name="white95">#F2FFFFFF</color>
+
+    <!-- alpha black-->
+    <color name="black95">#F2000000</color>
+    <color name="black65">#A5000000</color>
+
+
+    <color name="jly_grey">#4D000000</color>
+    <color name="bg_grey">#EDEFF5</color>
+    <color name="main_sudio_disable">#bbbbbb</color>
+
+    <color name="button_background">#FF6485F9</color>
+    <color name="input_background">#33A3ACCC</color>
+    <color name="text_color_disable">#80414141</color>
+
+</resources>

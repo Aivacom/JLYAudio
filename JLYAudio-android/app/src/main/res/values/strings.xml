@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Audio</string>
+    <string name="join_room">进入房间</string>
+    <string name="leave_room">退出房间</string>
+    <string name="confirm_cancel">取消</string>
+    <string name="upload_log_tittle">意见反馈</string>
+    <string name="commit">提交</string>
+    <string name="input_content_tip">请输入反馈内容</string>
+    <string name="app_version">当前版本:V%s</string>
+
+    <string name="app_destitle">版本功能描述：</string>
+    <string name="app_des">升级SDK到2.8.0</string>
+    <string name="loading_progress">加载中...</string>
+    <string name="token_error">token获取失败，请检查当前网络</string>
+    <string name="sound_effect">音效/变声模式 </string>
+
+    <string name="error_ileagal_number">纯数字键盘，不可输入特殊字符</string>
+    <string name="error_ileagal_room_id">请填写正确的房间号</string>
+    <string name="error_ileagal_uid">请填写正确的uid</string>
+    <string name="error_join_room">加入房间失败(%d)</string>
+    <string name="error_start_play">推流失败(%d)</string>
+
+    <string name="feedback_success">反馈成功</string>
+    <string name="feedback_fail">反馈失败</string>
+</resources>

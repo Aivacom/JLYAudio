@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="mode">
+        <item>通话模式 16 KHz采样率 18 K码率</item>
+        <item>通话模式 44.1 KHz采样率 40 K码率</item>
+        <item>娱乐模式 44.1 KHz采样率 40 K码率</item>
+        <item>娱乐模式 44.1 KHz采样率 128 K码率</item>
+    </string-array>
+</resources>
