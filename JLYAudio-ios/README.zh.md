@@ -10,6 +10,14 @@ English Version： [English](README.md)
 - 本文主要介绍如何使用Thunder iOS版本SDK实现同频道音视频连麦功能，基于该场景，将对实现步骤做简要说明。
 - 注意，我们只使用纯音频模式的SDK服务，所以引用SDK的时候只需要 `pod 'thunder/thunder','2.8.0' `引用子Pod即可。另外相机权限也不需要开启。
 
+我们提供全面的用户接入文档，来方便用户实现音视频能力的快速接入，如果您想了解具体集成方法、接口说明、相关场景Demo，可点击如下链接了解：
+
+> 集成SDK到APP，请参考：[SDK集成方法](https://docs.aivacom.com/cloud/cn/product_category/rtc_service/rt_video_interaction/integration_and_start/integration_and_start_ios.html)
+
+> API开发手册，请访问： [IOS API](https://docs.aivacom.com/cloud/cn/product_category/rtc_service/rt_video_interaction/api/iOS/v2.7.0/category.html)
+
+> 相关Demo下载，请访问：[SDK及Demo下载](https://docs.aivacom.com/download)
+
 <br />
    
 引用API
