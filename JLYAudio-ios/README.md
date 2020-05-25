@@ -7,8 +7,16 @@ Use Thunder SDK to realize audio link function
 
 Overview
 -------------------------------------------------------------
-- This article mainly introduces how to use Thunder The iOS version SDK implements the same channel audio and video functions. Based on this scenario, the implementation steps will be briefly explained. 
+This article mainly introduces how to use Thunder The iOS version SDK implements the same channel audio and video functions. Based on this scenario, the implementation steps will be briefly explained. 
 - Note that we only use the SDK service in audio-only mode, so you only need to refer to the child Pod with `pod 'thunder / thunder', '2.8.0'` when referencing the SDK. In addition, camera permissions do not need to be turned on.
+
+We provide comprehensive user access documentation so that users can quickly access audio and video capabilities.If you want to know the specific integration method, interface description, and related scenario Demo, you can click the following link to learn:
+
+> Integrate SDK to APP, please click:[SDK integration instructions](https://docs.aivacom.com/cloud/cn/product_category/rtc_service/rt_video_interaction/integration_and_start/integration_and_start_android.html)
+
+> API development manual, please click: [Android API](https://docs.aivacom.com/cloud/cn/product_category/rtc_service/rt_video_interaction/api/Android/v2.7.0/category.html)
+
+> For related Demo download, please click: [SDK and Demo Download](https://docs.aivacom.com/download)
 
 <br />
    
